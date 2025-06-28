@@ -1,0 +1,337 @@
+/* Основные переменные цветов */
+:root {
+  --primary-color: #D32F2F;
+  --primary-light: #FF6659;
+  --primary-dark: #9A0007;
+  --secondary-color: #81D4FA;
+  --text-color: #333;
+  --text-light: #fff;
+  --bg-color: #E0F7FA;
+  --card-bg: #fff;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Базовые стили */
+body {
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Заголовки */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+}
+
+/* Формы */
+.form-container {
+  background-color: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  margin: 2rem auto;
+  transition: var(--transition);
+  animation: fadeIn 0.6s ease-out;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.form-container:hover {
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+}
+
+input.form-control, textarea.form-control, select.form-select {
+  border-radius: 25px;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+
+input.form-control:focus, textarea.form-control:focus, select.form-select:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.2);
+  outline: none;
+}
+
+/* Кнопки */
+button, .btn {
+  border-radius: 25px;
+  padding: 12px 25px;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary, button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+.btn-primary:hover, button[type="submit"]:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+/* Навигация */
+.navbar {
+  background-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-brand, .navbar-nav .nav-link {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nav-link {
+  position: relative;
+  margin: 0 10px;
+  padding: 5px 0 !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--text-light);
+  transition: var(--transition);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Карточки */
+.card, .blog-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.card:hover, .blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Карусель */
+.carousel {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.carousel-item img {
+  border-radius: 20px;
+  height: 400px;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.carousel-control-prev, .carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: var(--transition);
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  background-color: var(--primary-color);
+}
+
+/* Алерты */
+.alert {
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.alert-danger {
+  background-color: #FFEBEE;
+  color: var(--primary-dark);
+  border-left: 4px solid var(--primary-color);
+}
+
+/* Эффекты при наведении */
+.hover-scale {
+  transition: var(--transition);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* Анимация пульсации для важных элементов */
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Специальные эффекты для фитнес-тематики */
+.fitness-badge {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow-sm);
+  margin: 5px;
+}
+
+/* Градиентные кнопки */
+.btn-gradient {
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: rotate(45deg);
+  transition: var(--transition);
+  opacity: 0;
+}
+
+.btn-gradient:hover::after {
+  opacity: 1;
+  animation: shine 1.5s;
+}
+
+@keyframes shine {
+  0% { left: -50%; }
+  100% { left: 150%; }
+}
+
+/* Параллакс эффект для секций */
+.parallax-section {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 100px 0;
+}
+
+.parallax-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
